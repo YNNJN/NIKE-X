@@ -4,7 +4,9 @@
 
 
 
+<br>
 
+<br>
 
 
 
@@ -14,7 +16,7 @@
 
 
 
-
+<br>
 
 ### 1. 모든 페이지의 썸네일에 대한 크롤링
 
@@ -35,7 +37,7 @@
 
 
 
-
+<br>
 
 ### 2. 모든 썸네일의 본문 링크에 대한 크롤링
 
@@ -44,6 +46,8 @@
   - 썸네일의 제목도, 요약도, 본문 중의 내용도 아닌 완전히 새로운 형태의 규칙이었음
   - 단 하루만에... 이것이 에자일인가요
   - 따라서 썸네일의 a 태그의 href를 크롤링하는 것으로 계획을 변경함
+
+<br>
 
 - copy하고 싶은 selector는 바로 이것이었는데,
 
@@ -66,6 +70,8 @@
       - 메모장에서 실행한 후 인코딩을 utf-8로 선택하여 다른 이름으로 저장하고
       - 다른 이름으로 저장한 csv파일을 엑셀에서 다시 실행하여 해결할 수 있다고 함
 
+<br>
+
 - 공식문서를 통해 a 태그 하나만을 가져오는 방법을 찾음
 
   - [calling-a-tag](https://www.crummy.com/software/BeautifulSoup/bs4/doc/#calling-a-tag-is-like-calling-find-all)
@@ -83,9 +89,49 @@
       contents = soup.find_all('div', {"class":"col-md-6 feature-tile__content"})
       ```
 
-- data의 객체를 다루는 과정에서 라이브러리의 `__init__` 파일을 뜯어보기도 함
-  - data 객체를 스트링으로 변환했고
+<br>
+
+- soup 객체를 다루는 과정에서 라이브러리의 `__init__` 파일을 뜯어보기도 함
+  - soup 객체를 스트링으로 변환했고
   - 큰따옴표의 인덱스로 슬라이싱하여 본문 링크를 추출할 수 있었음
 
 - VSCode의 Go Definition 기능도 유용하게 사용함
+
+
+
+<br>
+
+### 3. 본문 내용에 대한 크롤링
+
+- 4월 9일
+
+- 본문 링크에 대한 csv 파일을 읽어옴
+
+  - 본문 내용을 가져오기 위해 p 태그의 특정 class를 모두 가져옴
+  - 추출한 데이터를 확인한 결과, 2016년 7월 12일자 게시물부터 적용한 클래스 규칙으로
+  - 이전 게시물(30여 개)에 대해서는 다른 규칙을 적용하고 있음
+    - 이전 게시물은 클래스 지정 없이 p태그 만으로 문단을 구성하고 있음
+    - 따라서 해당 시점을 기준으로 데이터를 각각 추출하고 이후 병합해야
+
+-  `.descendants` 
+
+  > The `.descendants` attribute lets you iterate over all of a tag’s children, recursively: its direct children, the children of its direct children, and so on:
+
+  - 이 개념을 활용하여 p 태그 하위의 태그들을 제외함
+
+  ```python
+  soup = BeautifulSoup(response, 'html.parser')
+  
+  contents = soup.find_all('p', class_='text--p')
+  for content in contents:
+    for child in content.descendants:
+      if child is None:
+        contents_list.append(child)
+        else:
+          contents_list.append(child)
+  ```
+  - 여전히 font-weight 관련과 이미지 캡션 관련 html 태그들이 데이터에 섞여있음
+  - 하위 태그가 아니라서 섞여나오는 것 같음
+
+- 본문의 끝을 명시하기 위해 '.....'의 문자열을 추가함
 
