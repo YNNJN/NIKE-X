@@ -14,8 +14,15 @@ with open('data/body_url.csv', 'r', encoding='utf-8') as csvfile:
         data = BeautifulSoup(response, 'html.parser')
 
         contents = data.find_all('p', class_='text--p')
-        contents_list.append(contents)
+        for content in contents:
+            for child in content.descendants:
+                if child is None:
+                    contents_list.append(child)
+                else:
+                    contents_list.append(child)
+        contents_list.append('.........................................................')
 
 with open('body_contents.csv', 'w', encoding='utf-8', newline='') as csvfile:
     writer = csv.writer(csvfile)
-    writer.writerows(contents_list)
+    for content in contents_list:
+        writer.writerow([content])
