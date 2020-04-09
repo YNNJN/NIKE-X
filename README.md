@@ -25,7 +25,7 @@
 - `Requests`, `BeautifulSoup`의 라이브러리를 활용하여, csv 파일로 데이터를 추출함
   - 개발자 도구의 `copy selector`를 이용
 - 카테고리 내 페이지 모두를 크롤링하기 위해 `url의 패턴`을 찾음
-  - 도메인 주소 뒤 /page/p(page number) 의 형태였기 때문에, 반복문을 활용함
+  - 도메인 주소 뒤 /page/#p 의 형태였기 때문에, 반복문을 활용함
 - 페이지 수에 대한 반복문 내에 썸네일 수에 대한 반복문을 이중으로 작성하여
   - 모든 데이터를 딕셔너리 형태로 받음
 - `with open`의 writer 권한으로 title, date, content를 필드 네임으로 하여 `DictWriter`로 csv 파일을 작성함
@@ -77,29 +77,15 @@
   - `find()`와 `find_all()`의 용례를 파악하고 적용함
 
     - tag와 class명의 표기 방식에 유의할 것
-    - data 객체를 스트링으로 변환했고
-    - 큰따옴표의 인덱스로 슬라이싱하여 본문 링크를 추출할 수 있었음
 
-    ```python
-    a_href = []
-    for i in range(1, 11):
-        url = 'https://news.nike.com/collaborations/page/' + str(i)
-    
-        response = requests.get(url)
-        response = response.text
-        data = BeautifulSoup(response, 'html.parser')
-    
-        data = data.find('div', {'class':"col-md-10"})
-        contents = data.find_all('div', {"class":"col-md-6 feature-tile__content"})
-        
-        for content in contents :
-            a_tag_str = content.find_all('a')[1].__repr__()
-            idx_start = 8
-            idx_end = a_tag_str[9:].index('"')
-            a_href.append([a_tag_str[9:idx_end+9]])
-    ```
+      ```python
+      data = soup.find('div', {'class':"col-md-10"})
+      contents = soup.find_all('div', {"class":"col-md-6 feature-tile__content"})
+      ```
 
 - data의 객체를 다루는 과정에서 라이브러리의 `__init__` 파일을 뜯어보기도 함
+  - data 객체를 스트링으로 변환했고
+  - 큰따옴표의 인덱스로 슬라이싱하여 본문 링크를 추출할 수 있었음
 
 - VSCode의 Go Definition 기능도 유용하게 사용함
 
