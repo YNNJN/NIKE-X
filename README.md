@@ -113,6 +113,9 @@
     - 이전 게시물은 클래스 지정 없이 p태그 만으로 문단을 구성하고 있음
     - 따라서 해당 시점을 기준으로 데이터를 각각 추출하고 이후 병합해야
 
+
+<br>
+
 -  `.descendants` 
 
   > The `.descendants` attribute lets you iterate over all of a tag’s children, recursively: its direct children, the children of its direct children, and so on:
@@ -124,14 +127,51 @@
   
   contents = soup.find_all('p', class_='text--p')
   for content in contents:
-    for child in content.descendants:
-      if child is None:
-        contents_list.append(child)
-        else:
-          contents_list.append(child)
+      for child in content.descendants:
+          if child is None:
+              contents_list.append(child)
+          else:
+              contents_list.append(child)
   ```
+
   - 여전히 font-weight 관련과 이미지 캡션 관련 html 태그들이 데이터에 섞여있음
-  - 하위 태그가 아니라서 섞여나오는 것 같음
+    - 하위 태그가 아니라서 섞여나오는 것 같음
 
 - 본문의 끝을 명시하기 위해 '.....'의 문자열을 추가함
+
+
+
+<br>
+
+### 4. NLTK, TextBlob 환경 설정
+
+- 4월 10일
+
+- MAC에서 환경 세팅 시 만난 에러
+
+  - SSL Error
+
+    - `punkt tokenizer`를  개별적으로 다운로드하여
+
+    - OSX: `/usr/local/share/nltk_data/tokenizers` 의 경로에서 압축을 풂
+
+      - 이 때 숨겨진 Library 폴더에 엑세스하기 위해 다음의 명령어 사용
+
+        ```bash
+        defaults write com.apple.finder AppleShowAllFiles YES
+        ```
+
+    - Python이 설치된 경로에 들어가 `Install Certificates.command`를 더블 클릭(First run)하여 해결
+
+- 사용하는 인터프리터의 파이썬 버전을 확인할 것
+
+  - VSCode - Python: Select Interpreter
+
+
+
+<br>
+
+
+
+
 
