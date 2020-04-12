@@ -14,18 +14,22 @@ with open('data/articles.csv', 'r', encoding='utf-8') as csvfile:
             collabos.append(title)
 
     for i in range(len(collabos)):
-        collabos[i] = collabos[i].replace(' x ', 'x')
+        collabos[i] = collabos[i].replace(' x ', '-x-')
         
     collabo_noun_phrases = []
     for collabo in collabos:
         collabo = TextBlob(collabo)
         collabo_noun_phrases.append(collabo.noun_phrases)
 
-    # print(collabo_noun_phrases)
+    collabo_x = []
+    for i in range(len(collabo_noun_phrases)):
+        for j in range(len(collabo_noun_phrases[i])):
+            if '-x-' in collabo_noun_phrases[i][j]:
+                collabo_x.append(collabo_noun_phrases[i][j])
     
 with open('x_in_title.csv', 'w', encoding='utf-8', newline='') as csvfile:
     writer = csv.writer(csvfile)
-    for noun in collabo_noun_phrases:
+    for noun in collabo_x:
         writer.writerow([noun])
 
 
