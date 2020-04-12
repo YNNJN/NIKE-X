@@ -26,6 +26,9 @@ with open('data/articles.csv', 'r', encoding='utf-8') as csvfile:
         for j in range(len(collabo_noun_phrases[i])):
             if '-x-' in collabo_noun_phrases[i][j]:
                 collabo_x.append(collabo_noun_phrases[i][j])
+
+    for i in range(len(collabo_x)):
+        collabo_x[i] = collabo_x[i].split('-x-')
     
 with open('x_in_title.csv', 'w', encoding='utf-8', newline='') as csvfile:
     writer = csv.writer(csvfile)
