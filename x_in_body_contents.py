@@ -30,7 +30,7 @@ with open('data/body_contents.csv', 'r', encoding='utf-8') as csvfile:
     for i in range(len(collabo_x)):
         collabo_x[i] = collabo_x[i].split('-x-')
     
-with open('x_in_body_content.csv', 'w', encoding='utf-8', newline='') as csvfile:
+with open('x_in_body_contents.csv', 'w', encoding='utf-8', newline='') as csvfile:
     writer = csv.writer(csvfile)
     for noun in collabo_x:
         writer.writerow(noun)
