@@ -46,11 +46,13 @@
 
   > Word cloud
 
-  ![wordcloud](85949309-fc724d80-b990-11ea-8b55-ce6c4af0a657.png)
+  <img width="1680" alt="wordcloud" src="https://user-images.githubusercontent.com/60057425/85949450-dac59600-b991-11ea-938c-f8ef61e7f731.png">
 
   > Frequency graph
 
-![frequency](85949315-03995b80-b991-11ea-8bd7-07c93d99ebfe.png)
+<img width="1680" alt="frequency" src="https://user-images.githubusercontent.com/60057425/85949454-e31dd100-b991-11ea-8899-141b300e0dc5.png">
+
+
 
 
 
