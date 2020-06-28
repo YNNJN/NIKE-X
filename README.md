@@ -44,9 +44,13 @@
 
   <br>
 
-![translate_wordcloud](85949058-60941200-b98f-11ea-8e2f-32c0b33ffba1.png)
+  > Word cloud
 
-![translate_noun_frequency](85949057-5f62e500-b98f-11ea-9b16-9d4e0a9f522b.png)
+  ![translate_wordcloud](85949058-60941200-b98f-11ea-8e2f-32c0b33ffba1-20200628224117068.png)
+
+  > Frequency graph
+
+![translate_noun_frequency](85949057-5f62e500-b98f-11ea-9b16-9d4e0a9f522b-20200628224047770.png)
 
 
 
