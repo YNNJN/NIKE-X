@@ -46,11 +46,11 @@
 
   > Word cloud
 
-  ![translate_wordcloud](85949058-60941200-b98f-11ea-8e2f-32c0b33ffba1-20200628224117068.png)
+  ![wordcloud](85949309-fc724d80-b990-11ea-8b55-ce6c4af0a657.png)
 
   > Frequency graph
 
-![translate_noun_frequency](85949057-5f62e500-b98f-11ea-9b16-9d4e0a9f522b-20200628224047770.png)
+![frequency](85949315-03995b80-b991-11ea-8bd7-07c93d99ebfe.png)
 
 
 
